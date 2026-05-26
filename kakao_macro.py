@@ -65,9 +65,9 @@ def send_kakao_message(room_count, image_path, message_text):
         pyautogui.hotkey('ctrl', 'v')
         time.sleep(0.1)
         
-        # 4. Enter (이미지 파일 선택 및 전송) -> 0.2초 대기
+        # 4. Enter (이미지 파일 선택 및 전송) -> 사진이 먼저 완전히 업로드되도록 2초 대기
         pyautogui.press('enter')
-        time.sleep(0.2)
+        time.sleep(2.0)
         
         # [메시지 전송 파트]
         # 5. 메시지 텍스트 복사 후 Ctrl + V (텍스트 입력) -> 0.1초 대기
