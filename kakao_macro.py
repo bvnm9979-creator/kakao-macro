@@ -51,6 +51,19 @@ def load_message():
 
 def send_kakao_message(room_count, image_path, message_text):
     for i in range(room_count):
+        # [핵심 알고리즘] 카카오톡은 메시지를 보낸 방이 무조건 맨 위(1번째)로 점프합니다.
+        # 따라서 현재 타겟 방을 찾으려면, 맨 위에서부터 정확히 i번 내려가면 됩니다.
+        # 이렇게 하면 새 메시지 때문에 채팅방 순서가 뒤섞이는 현상을 100% 방지할 수 있습니다.
+        
+        # 0. 리스트 맨 위(1번째 방)로 포커스 이동
+        pyautogui.press('home')
+        time.sleep(0.2)
+        
+        # 타겟 방까지 아래로 이동
+        for _ in range(i):
+            pyautogui.press('down')
+        time.sleep(0.2)
+        
         # 1. Enter (채팅방 열기) -> 0.5초 대기
         pyautogui.press('enter')
         time.sleep(0.5)
@@ -82,10 +95,7 @@ def send_kakao_message(room_count, image_path, message_text):
         # 7. Esc (채팅방 닫기) -> 창이 완전히 닫히고 리스트로 포커스가 가도록 0.5초 대기
         pyautogui.press('esc')
         time.sleep(0.5)
-        
-        # 8. Down 방향키 (다음 채팅방 이동) -> 이동 후 확실히 인식되도록 0.3초 대기
-        pyautogui.press('down')
-        time.sleep(0.3)
+        # 이제 다음 방 이동은 다음 루프의 Home과 Down이 알아서 처리합니다.
 
 def main():
     print("==================================================")
