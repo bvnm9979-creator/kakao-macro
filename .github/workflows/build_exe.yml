@@ -31,4 +31,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: kakao_macro_exe
-        path: dist/kakao_macro.exe
+        path: |
+          dist/kakao_macro.exe
+          사용법.txt
