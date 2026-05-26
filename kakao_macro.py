@@ -79,13 +79,15 @@ def send_kakao_message(room_count, image_path, message_text):
         pyautogui.press('enter')
         time.sleep(0.3)
         
-        # 7. Esc (채팅방 닫기) -> 0.1초 대기
+        # 7. Esc (채팅방 닫기) -> 창이 완전히 닫히고 리스트로 포커스가 가도록 0.5초 대기
+        # (혹시 모를 씹힘 방지를 위해 2번 누름)
         pyautogui.press('esc')
-        time.sleep(0.1)
+        pyautogui.press('esc')
+        time.sleep(0.5)
         
-        # 8. Down 방향키 (다음 채팅방 이동) -> 0.1초 대기
+        # 8. Down 방향키 (다음 채팅방 이동) -> 이동 후 확실히 인식되도록 0.3초 대기
         pyautogui.press('down')
-        time.sleep(0.1)
+        time.sleep(0.3)
 
 def main():
     print("==================================================")
