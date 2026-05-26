@@ -80,8 +80,6 @@ def send_kakao_message(room_count, image_path, message_text):
         time.sleep(0.3)
         
         # 7. Esc (채팅방 닫기) -> 창이 완전히 닫히고 리스트로 포커스가 가도록 0.5초 대기
-        # (혹시 모를 씹힘 방지를 위해 2번 누름)
-        pyautogui.press('esc')
         pyautogui.press('esc')
         time.sleep(0.5)
         
